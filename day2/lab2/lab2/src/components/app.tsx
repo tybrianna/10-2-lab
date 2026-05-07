@@ -1,4 +1,4 @@
-import PaginationDemo from "./components/PaginationDemo";
+import PaginationDemo from "./Hook/PaginationDemo";
 
 function App() {
   return (

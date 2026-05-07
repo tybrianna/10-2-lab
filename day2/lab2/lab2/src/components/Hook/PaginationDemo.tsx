@@ -1,6 +1,33 @@
-import React from "react";
-import usePagination from "../hooks/usePagination";
-import "./PaginationDemo.css";
+import React, { useState } from "react";
+
+const usePagination = ({ totalItems, itemsPerPage, initialPage }: { totalItems: number; itemsPerPage: number; initialPage: number }) => {
+  const [currentPage, setCurrentPage] = useState(initialPage);
+
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage - 1, totalItems - 1);
+  const itemsOnCurrentPage = endIndex - startIndex + 1;
+
+  const nextPage = () => setCurrentPage(p => Math.min(p + 1, totalPages));
+  const prevPage = () => setCurrentPage(p => Math.max(p - 1, 1));
+  const setPage = (page: number) => setCurrentPage(page);
+
+  const canNextPage = currentPage < totalPages;
+  const canPrevPage = currentPage > 1;
+
+  return {
+    currentPage,
+    totalPages,
+    startIndex,
+    endIndex,
+    itemsOnCurrentPage,
+    nextPage,
+    prevPage,
+    setPage,
+    canNextPage,
+    canPrevPage,
+  };
+};
 
 const PaginationDemo: React.FC = () => {
   const items = Array.from({ length: 100 }, (_, index) => `Item ${index + 1}`);
