@@ -1,5 +1,5 @@
-import PaginationDemo from "./Hook/PaginationDemo";
-import DebounceSearchDemo from "./Hook/DebounceSearchDemo";
+import PaginationDemo from "./components/PaginationDemo";
+import DebounceSearchDemo from "./components/DebounceSearchDemo";
 function App() {
   return (
     <div>

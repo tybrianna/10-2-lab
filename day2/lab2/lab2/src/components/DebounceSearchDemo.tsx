@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useDebounce from "./useDebounce";
+import useDebounce from "../hooks/useDebounce";
 
 const DebounceSearchDemo: React.FC = () => {
   const [search, setSearch] = useState("");
